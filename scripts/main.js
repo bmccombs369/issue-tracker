@@ -1,3 +1,35 @@
+document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
+
+function saveIssue(e) {
+  let issueDescription = document.getElementById('issueDescriptionInput').value;
+  let issueSeverity = document.getElementById('issueSeveritySelect').value;
+  let issueId = chance.guid();
+  let issueStatus = 'Open';
+
+  let issue = {
+    id: issueId,
+    description: issueDescription,
+    severity: issueSeverity,
+    status: issueStatus
+  }
+
+  if (localStorage.getItem('issues') == null) {
+    let issues = [];
+    issues.push(issue);
+    localStorage.setItem('issues', JSON.stringify(issues))
+  } else {
+    let issues = JSON.parse(localStorage.getItem('issues'));
+    issues.push(issue);
+    localStorage.setItem('issues', JSON.stringify(issues));
+  }
+
+  document.getElementById('issueInputForm').reset();
+
+  fetchIssues();
+
+  e.preventDefault();
+}
+
 function fetchIssues() {
   let issues = JSON.parse(localStorage.getItem('issues'));
   let issuesList = document.getElementById('issuesList');
