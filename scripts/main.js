@@ -73,11 +73,11 @@ function fetchIssues() {
     issuesList.innerHTML += '<div class="card">' +
                             '<div class="card-body">' +
                             '<h6>Issue ID: ' + id + '</h6>' +
-                            '<p><span class="label label-info">' + status + '</span></p>' +
+                            `${(status == 'Open' ? '<p><span class="badge badge-danger">' : '<p><span class="badge badge-success">')}` + status + '</span></p>' +
                             '<h3>' + description + '</h3>' +
                             '<p><span class"glyphicon glyphicon-time></span>' + severity + '</p>' +
-                            '<a href="#" onclick="setStatusClosed(\''+id+'\')" class="btn btn-warning">Close</a>' +
-                            '<a href="#" onclick="deleteIssue(\''+id+'\')" class="btn btn-danger">Delete</a>'+
+                            '<a href="#" onclick="setStatusClosed(\''+id+'\')" class="btn btn-warning" role="button">' + `${(status == 'Open' ? 'Close' : 'Open')}` + '</a>' +
+                            '<a href="#" onclick="deleteIssue(\''+id+'\')" class="btn btn-danger" role="button">Delete</a>'+
                             '</div>' +
                             '</div>'
   }
