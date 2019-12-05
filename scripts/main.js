@@ -89,7 +89,7 @@ function fetchIssues() {
                             '<h6 class="issueID">Issue ID: ' + id + '</h6>' +
                             `${(status == 'Open' ? '<p><span class="badge badge-danger">' : '<p><span class="badge badge-success">')}` + status + '</span></p>' +
                             '<h3>' + description + '</h3>' +
-                            '<p class="severity"><i class="far fa-clock"></i>' + severity + '</p>' +
+                            '<p class="severity"><i class="far fa-clock"></i> ' + severity + '</p>' +
                             '<a href="#" ' + `${(status == 'Open' ? 'onclick="setStatusClosed(\''+id+'\')"' : 'onclick="setStatusOpen(\''+id+'\')"')}` + ' class="btn btn-warning" role="button">' + `${(status == 'Open' ? 'Close' : 'Open')}` + '</a>' +
                             '<a href="#" onclick="deleteIssue(\''+id+'\')" class="btn btn-danger" role="button">Delete</a>'+
                             '</div>' +
